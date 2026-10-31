@@ -16,6 +16,10 @@ git clone https://github.com/Rseniia/omd.git
 ```bash
 cd omd
 ```
+**Переключитесь на ветку с домашними заданиями:**
+```bash
+git switch hw1
+```
 **Для запуска соответствующего домашнего задания выполните:**
 ```bash
 python hw1.py
