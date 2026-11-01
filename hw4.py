@@ -13,35 +13,40 @@ days = [
 
 #Нужно найти:
 
-# выручку за всю неделю
+def main():
 
-sum_revenue =  sum(x['revenue'] for x in days)
-print('Выручку за всю неделю',sum_revenue)
-print()
+    # выручку за всю неделю
 
-# день с самой большой выручкой
+    sum_revenue =  sum(x['revenue'] for x in days)
+    print('Выручку за всю неделю',sum_revenue)
+    print()
 
-#если бы задача была про дни с самой большой выручкой,
-# то решалось бы чуть-чуть по другому
+    # день с самой большой выручкой
 
-max_revenue = days[0]['revenue']
-day = days[0]['day']
-for i in days:
-    if i['revenue'] > max_revenue:
-        max_revenue = i['revenue']
-        day = i['day']
-print('день с самой большой выручкой', day)
-print()
+    #если бы задача была про дни с самой большой выручкой,
+    # то решалось бы чуть-чуть по другому
 
-# среднюю выручку на один заказ в каждый день
+    max_revenue = days[0]['revenue']
+    day = days[0]['day']
+    for i in days:
+        if i['revenue'] > max_revenue:
+            max_revenue = i['revenue']
+            day = i['day']
+    print('день с самой большой выручкой', day)
+    print()
 
-# из предположения, что возвращенные заказы входят в заказы
+    # среднюю выручку на один заказ в каждый день
 
-average_revenue = {x['day']: x['revenue']/x['orders'] for x in days}
-print(average_revenue)
-print()
+    # из предположения, что возвращенные заказы входят в заказы
 
-# дни, где возвратов больше 20% заказов
+    average_revenue = {x['day']: x['revenue']/x['orders'] for x in days}
+    print(average_revenue)
+    print()
 
-days_returned_20 = [x['day'] for x in days if x['returns']/x['orders'] > 0.2]
-print(days_returned_20)
+    # дни, где возвратов больше 20% заказов
+
+    days_returned_20 = [x['day'] for x in days if x['returns']/x['orders'] > 0.2]
+    print(days_returned_20)
+
+if __name__ == "__main__":
+    main()

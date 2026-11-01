@@ -4,15 +4,21 @@ moscow = {201, 202, 203, 204}
 kazan = {203, 204, 205, 206}
 
 #Нужно найти:
-#- что можно забрать в любом из двух городов
-print(moscow&kazan)
 
-#- что есть только в Москве
-print(moscow - kazan)
+def main():
 
-#- что есть только в Казани
-print(kazan - moscow)
+    #- что можно забрать в любом из двух городов
+    print(moscow&kazan)
 
-#- сколько разных товаров на обоих складах вместе
-uniq_product = moscow|kazan
-print(len(uniq_product))
+    #- что есть только в Москве
+    print(moscow - kazan)
+
+    #- что есть только в Казани
+    print(kazan - moscow)
+
+    #- сколько разных товаров на обоих складах вместе
+    uniq_product = moscow|kazan
+    print(len(uniq_product))
+
+if __name__ == "__main__":
+    main()

@@ -15,27 +15,31 @@ orders = [
 
 #Нужно найти:
 
+def main():
+
 # на какую сумму оформили возвраты
-sum_returned =  sum(x['amount'] for x in orders if x['status'] == 'returned')
-print('Оформили возвраты на сумму', sum_returned)
-print()
+    sum_returned =  sum(x['amount'] for x in orders if x['status'] == 'returned')
+    print('Оформили возвраты на сумму', sum_returned)
+    print()
 
-# кто хотя бы раз вернул заказ
-returned_name = set()
-for i in orders:
-    if i['status'] == 'returned':
-        returned_name.add(i['buyer'])
-print(returned_name)
-print()
+    # кто хотя бы раз вернул заказ
+    returned_name = set()
+    for i in orders:
+        if i['status'] == 'returned':
+            returned_name.add(i['buyer'])
+    print(returned_name)
+    print()
 
-# сколько заказов доставлено покупателю
-delivered_buyer = [x['buyer'] for x in orders if  x['status'] == 'delivered']
-dict_delivered_buyer = {x:delivered_buyer.count(x) for x in delivered_buyer}
-print(dict_delivered_buyer)
-print()
+    # сколько заказов доставлено покупателю
+    count_delivered = len([x for x in orders if  x['status'] == 'delivered'])
+    print('Количество доставленных заказов:', count_delivered)
+    print()
 
-# средний чек доставленных заказов
+    # средний чек доставленных заказов
 
-sum_delivered =  sum(x['amount'] for x in orders if x['status'] == 'delivered')
-count_delivered =  len([x['status'] for x in orders if x['status'] == 'delivered'])
-print('средний чек',round(sum_delivered/count_delivered, 2))
+    sum_delivered =  sum(x['amount'] for x in orders if x['status'] == 'delivered')
+    count_delivered =  len([x['status'] for x in orders if x['status'] == 'delivered'])
+    print('средний чек',round(sum_delivered/count_delivered, 2))
+
+if __name__ == "__main__":
+    main()

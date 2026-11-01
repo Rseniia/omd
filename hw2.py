@@ -16,43 +16,48 @@ queries = [
 
 #Нужно найти:
 
-#сколько всего поисковых запросов в ленте
+def main():
 
-print(len(queries))
-print()
+    #сколько всего поисковых запросов в ленте
 
-#сколько раз ввели каждый запрос
+    print(len(queries))
+    print()
 
-uniq = list(set(queries)) # содержит только уникальные запросы
-for i in range(len(uniq)):
-    print('запрос', uniq[i], 'ввели', queries.count(uniq[i]))
-print()
-#другой метод через словарь
+    #сколько раз ввели каждый запрос
 
-dict_queries = {x: queries.count(x) for x in queries}
-print(dict_queries)
-print()
+    uniq = list(set(queries)) # содержит только уникальные запросы
+    for i in range(len(uniq)):
+        print('запрос', uniq[i], 'ввели', queries.count(uniq[i]))
+    print()
+    #другой метод через словарь
 
-#какой запрос вводили чаще всего
+    dict_queries = {x: queries.count(x) for x in queries}
+    print(dict_queries)
+    print()
 
-print(max(dict_queries, key=dict_queries.get))
-print()
+    #какой запрос вводили чаще всего
 
-#другой метод через for
+    print(max(dict_queries, key=dict_queries.get))
+    print()
 
-m = max(dict_queries.values())
-for i in range(len(uniq)):
-    if dict_queries[uniq[i]] == m: #dict_queries[uniq[i]] возвращает значение словаря по ключу
-        print(uniq[i])
-        m_key = uniq[i]
-print()
-#какую долю всех поисков он занимает
+    #другой метод через for
 
-print(m_key, 'занимает cледующую долю', round(m/sum(dict_queries.values())*100,2), '%') #можно делить на len(queries)
-print()
+    m = max(dict_queries.values())
+    for i in range(len(uniq)):
+        if dict_queries[uniq[i]] == m: #dict_queries[uniq[i]] возвращает значение словаря по ключу
+            print(uniq[i])
+            m_key = uniq[i]
+    print()
+    #какую долю всех поисков он занимает
 
-#какие запросы встретились один раз
+    print(m_key, 'занимает cледующую долю', round(m/sum(dict_queries.values())*100,2), '%') #можно делить на len(queries)
+    print()
 
-for i in range(len(uniq)):
-    if dict_queries[uniq[i]] == 1: #dict_queries[uniq[i]] возвращает значение словаря по ключу
-        print(uniq[i])
+    #какие запросы встретились один раз
+
+    for i in range(len(uniq)):
+        if dict_queries[uniq[i]] == 1: #dict_queries[uniq[i]] возвращает значение словаря по ключу
+            print(uniq[i])
+
+if __name__ == "__main__":
+    main()
