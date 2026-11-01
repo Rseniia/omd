@@ -30,15 +30,16 @@ def task1(data) -> dict:
 
         if department not in hierarchy:
             hierarchy[department] = set()
+
         hierarchy[department].add(team)
 
     return hierarchy
 
 def show_task1(hierarchy) -> None:
     print('Вывелось задание 1')
+
     for department, team in hierarchy.items():
         print(f'{department}: {', '.join(team)}')
-
 
 def task2(data) -> dict:
     summary = {}
@@ -71,6 +72,7 @@ def task2(data) -> dict:
 
 def show_task2(summary) -> None:
     print('Вывелось задание 2')
+
     for department in summary:
         print(f"Департамент: {department}\n"
               f"Количество сотрудников: {summary[department]['employee_count']}\n"
@@ -80,27 +82,29 @@ def show_task2(summary) -> None:
 
 
 def task3(data) -> None:
-    r = task2(data)
-    list_data = list(r.values())
-    with open('users.csv', 'w', encoding='utf-8', newline='') as file:
+    department_summary = task2(data)
+    department_stats = list(department_summary.values())
+
+    with open('department_summary.csv', 'w', encoding='utf-8', newline='') as file:
         writer = csv.writer(file, delimiter=';')
-        writer.writerow(['department'] + (list(list_data[0].keys())))
+        writer.writerow(['department'] + (list(department_stats[0].keys())))
 
-        for department, stats in r.items():
+        for department, stats in department_summary.items():
             writer.writerow([department] + list(stats.values()))
-
     # читаем что получилось
-    with open('users.csv', 'r', encoding='utf-8') as file:
+    with open('department_summary.csv', 'r', encoding='utf-8') as file:
        print(file.read())
     print('Задание 3 выполнилось')
 
 
 def main(number_task: int) -> None:
+
     if number_task not in (1, 2, 3):
         print("Некорректный номер отчёта")
         return
 
     data = read_file('Corp_Summary.csv')
+
     if number_task == 1:
         show_task1(task1(data))
 
