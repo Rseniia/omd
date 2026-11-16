@@ -1,4 +1,3 @@
-
 import json
 
 
@@ -26,7 +25,8 @@ def process_dictionary_with_config(dictionary, config):
         if isinstance(config[key], tuple):
             path, func = config[key]
             value = extract_nested_value(dictionary, path)
-            new_dict[key] = func(value)
+            if value is not None:
+                new_dict[key] = func(value)
         else:
             new_dict[key] = extract_nested_value(dictionary, config[key])
 
@@ -34,8 +34,10 @@ def process_dictionary_with_config(dictionary, config):
 
 
 def process_list_of_dicts_with_config(list_of_dicts, config):
-    new_list_of_dicts = []
+    if list_of_dicts is None:
+        return None
 
+    new_list_of_dicts = []
     for i in list_of_dicts:
         new_list_of_dicts.append(process_dictionary_with_config(i, config))
 
@@ -51,14 +53,3 @@ def create_processor(config, list_processor=False):
             return process_dictionary_with_config(obj, config)
 
     return processor
-
-
-
-"""
-def main():
-
-    pass
-if __name__ == "__main__":
-    main()
-"""
-

@@ -22,8 +22,11 @@ def main():
     laureates = read_json_file("laureates.json")
     laureates_data = []
 
-    for laureate in laureates['laureates']:
+    for laureate in laureates["laureates"]:
         laureates_data.append(get_laureate_data(laureate))
+    assert len(laureates_data) == len(laureates["laureates"])
+
+    return laureates_data
 
 
 if __name__ == "__main__":

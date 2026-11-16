@@ -38,15 +38,4 @@ def person_processor():
 def org_processor():
     return create_processor(CONFIG_ORG)
 
-"""
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()
-"""
-
-
-
 

@@ -13,12 +13,3 @@ CONFIG_PRIZE = {
 def prize_processor():
     return create_processor(CONFIG_PRIZE, list_processor=True)
 
-
-    """
-    def main():
-        pass
-
-
-    if __name__ == "__main__":
-        main()
-    """
