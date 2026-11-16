@@ -1,4 +1,4 @@
-def Find_None(data):
+def find_none(data):
     for laureate in data:
         for value in laureate.values():
             if value is None:
@@ -14,18 +14,18 @@ def count_all(data) -> dict[str, int]:
     return dict_all
 
 
-def count_None(data) -> dict[str, int]:
-    dict_None = {}
+def count_none(data) -> dict[str, int]:
+    dict_none = {}
     for laureate in data:
         for key, value in laureate.items():
-            dict_None[key] = dict_None.get(key, 0) + (value is None)
-    return dict_None
+            dict_none[key] = (dict_none.get(key, 0) + (value is None))
+    return dict_none
 
 
-def proportion_None(dict_None, dict_all) -> dict[str, int]:
+def proportion_none(dict_none, dict_all) -> dict[str, int]:
     proportion = {}
     for key, value in dict_all.items():
-        proportion[key] = round(dict_None[key] / dict_all[key], 3)
+        proportion[key] = round(dict_none[key] / dict_all[key], 3)
     return proportion
 
 
